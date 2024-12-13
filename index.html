@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown UI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 700px;
+        }
+
+        #loading {
+            font-size: 2rem;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 20px;
+            margin-left: 222px;
+            height: 50px;
+            width: 250px;
+            line-height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #e7e7e7;
+            border-radius: 5px;
+            transition: all 0.5s ease-in-out; /* Smooth transition */
+            overflow: hidden;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:active {
+            background-color: #004085;
+        }
+
+        /* Styles for the loading background image */
+        #loading.loading-image {
+            background-size: cover;
+            background-position: center;
+            color: transparent;  /* Hide the countdown text when the image is shown */
+            font-size: 0;  /* Hide countdown text */
+            height: 400px;  /* Adjust height to suit your image */
+            width: 100%;  /* Make the image cover full width */
+            border-radius: 10px; /* Optional: to match the container's border-radius */
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="loading">10</div>
+        <button onclick="fun()">Click me</button>
+    </div>
+    
+    <script>
+        function fun() {
+            let countdown = 10;
+            let load = document.getElementById("loading");
+
+            // Change countdown every second
+            let timer = setInterval(() => {
+                load.innerText = countdown;
+                countdown--;
+
+                if (countdown < 0) {
+                    clearInterval(timer);
+                    load.classList.add("loading-image");
+                    load.style.background = "url('https://images.indianexpress.com/2019/12/Happy-New-Year-2020_1-1.jpg')";
+                }
+            }, 1000);  // 1 second interval
+        }
+    </script>
+</body>
+</html>
